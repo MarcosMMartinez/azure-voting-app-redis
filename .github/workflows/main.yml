@@ -16,16 +16,3 @@ jobs:
       run: |
        az login --service-principal -u ${{ secrets.SP_ID }} -p ${{ secrets.SP_PASS }} -t ${{ secrets.TENANT_ID }}
        
-      id: acr
-      uses: azure/acr-build@v1
-      with:
-          service_principal: ${{ secrets.SP_ID }}
-          service_principal_password: ${{ secrets.SP_PASS }}
-          tenant: ${{ secrets.TENANT_ID }}
-          registry: ${{ secrets.AZ_REGISTRY }}
-          repository: ${{ secrets.REPO }}
-          image: vote-app
-          #git_access_token: ${{ secrets.git_access_token }}
-          folder: /azure-vote
-          dockerfile: /azure-vote/Dockerfile
-          branch: main
