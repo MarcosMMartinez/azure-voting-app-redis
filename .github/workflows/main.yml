@@ -1,0 +1,18 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - "azure-vote/"
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ACR build
+      run: |
+       az login --service-principal -u ${{ secrets.SP_ID }} -p ${{ secrets.SP_PASS }} -t ${{ secrets.TENANT_ID }}
+       
