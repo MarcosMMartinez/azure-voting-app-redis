@@ -15,5 +15,5 @@ jobs:
     - name: ACR build
       run: |
        az login --service-principal -u ${{ secrets.SPID }} -p ${{ secrets.SPPass }} -t ${{ secrets.TenantID }}
-       az acr build -r markitoacreastus -t vote-app:{{.Run.ID}} ./azure-vote/
+       az acr build -r markitoacreastus -t vote-app:{{.Run.ID}} /azure-vote
        
